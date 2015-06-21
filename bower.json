@@ -1,0 +1,22 @@
+{
+  "name": "cdex",
+  "version": "0.0.0",
+  "homepage": "https://github.com/katya450/cdex",
+  "authors": [
+    "Jarno Sarvi <jarno.sarvi@gmail.com>",
+    "Katja Lusma <katja.lusma@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "require": "*",
+    "jquery": "~2.1.4"
+  }
+}
