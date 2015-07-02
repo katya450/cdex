@@ -14,9 +14,19 @@
 	  	<![endif]-->
 	</head>
 	<body>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="bower/jquery/dist/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
+	  <div class="container">
+	    <div id="alert" class="alert" role="alert">&nbsp;</div>
+      <h1>CDEX</h1>
+      <div class="input-group">
+        <input id="artist" type="text" class="form-control" placeholder="Artist"/>
+        <input id="record_name" type="text" class="form-control" placeholder="Record Name"/>
+        <button id="add_record" type="button" class="btn btn-default">Add</button>
+      </div>
+	  </div>
+	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	  <script src="bower/jquery/dist/jquery.min.js"></script>
+	  <!-- Include all compiled plugins (below), or include individual files as needed -->
+	  <script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
+	  <script src="javascripts/init.js"></script>
 	</body>
 </html>
