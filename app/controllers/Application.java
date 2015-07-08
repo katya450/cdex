@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -28,5 +30,10 @@ public class Application extends Controller {
     		result.put("id", id);
         return ok(result);
     	}
+    }
+    
+    public static Result getAll() throws Throwable {
+      List<Record> records = Database.getRecords();
+      return ok(Json.toJson(records));
     }
 }
