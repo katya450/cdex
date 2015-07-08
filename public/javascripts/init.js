@@ -17,7 +17,7 @@ $(function() {
       contentType: 'application/json',
       async: true,
       data: JSON.stringify(record),
-      success: loadRecords
+      success: appendRecord
     })
   }
   
@@ -31,13 +31,14 @@ $(function() {
   }
   
   function displayRecords(records) {
-    var body = $('#record-list tbody')
-    body.html('')
-    records.forEach(function(el) {
-      body.append('<tr>' +
-          '<td>' + el.id + '</td>' +
-          '<td>' + el.artist + '</td>' +
-          '<td>' + el.name + '</td></tr>')
-    })
+    $('#record-list tbody').html('')
+    records.forEach(function(el) { appendRecord(el) })
+  }
+  
+  function appendRecord(record) {
+    $('#record-list tbody').append('<tr>' +
+          '<td>' + record.id + '</td>' +
+          '<td>' + record.artist + '</td>' +
+          '<td>' + record.name + '</td></tr>')
   }
 })
