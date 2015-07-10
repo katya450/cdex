@@ -6,9 +6,9 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import com.avaje.ebean.Ebean;
 import com.fasterxml.jackson.databind.JsonNode;
 
-import models.Database;
 import models.Record;
 
 public class Application extends Controller {
@@ -22,13 +22,13 @@ public class Application extends Controller {
       if (record.artist == null || record.name == null) {
         return badRequest("Missing fields");
       }
-      record.id = Database.persist(record);
+      Ebean.save(record);
       return ok(Json.toJson(record));
     }
   }
 
   public static Result getAll() throws Throwable {
-    List<Record> records = Database.getRecords();
+    List<Record> records = Record.find.all();
     return ok(Json.toJson(records));
   }
 }
