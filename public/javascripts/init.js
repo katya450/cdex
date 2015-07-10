@@ -42,7 +42,6 @@ $(function() {
     }
     
     function displayRecords(records) {
-      recordTable.html('')
       records.forEach(function(el) { appendRecord(el) })
     }
     
