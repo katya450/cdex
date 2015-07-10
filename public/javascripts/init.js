@@ -1,9 +1,9 @@
 $(function() {
   require.config({
-    baseUrl: "../",
+    baseUrl: "bower/",
     paths: {
-      'jquery': 'bower/jquery/dist/jquery',
-      'handlebars': 'bower/handlebars/handlebars'
+      'jquery': 'jquery/dist/jquery',
+      'handlebars': 'handlebars/handlebars'
     }
   })
   require(['jquery', 'handlebars'], function($, Handlebars) {
