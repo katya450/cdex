@@ -16,4 +16,7 @@ public class Record extends Model {
     @Id
     @Constraints.Min(10)
     public Long id;
+
+  private static final long serialVersionUID = 2776119609273705779L;
+
 }
