@@ -4,7 +4,7 @@
 
 # REST endpoint 
 POST    /record                    controllers.Application.upsertRecord()
-
+GET     /records                   controllers.Application.getRecords()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file                     controllers.Assets.at(path="/public", file)

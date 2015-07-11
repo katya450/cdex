@@ -19,4 +19,8 @@ public class Record extends Model {
   @Id
   @Constraints.Min(10)
   public Long id;
+
+  public static Finder<Long, Record> find = 
+      new Finder<Long, Record>(Long.class, Record.class);
+
 }
