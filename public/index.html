@@ -20,7 +20,23 @@
           <input id="name" type="text" class="form-control" placeholder="Levyn nimi" />   
           <button id="add" type="button" class="btn btn-default">KLIK</button> 
         </div>
-     </div>
+      </div>
+      
+      <table id="recordtable" class="table">
+        <thead>
+            <tr>
+                <th>Artist</th>
+                <th>Record</th>
+            </tr>
+        </thead>
+        <tbody>
+           <script id="records-template" type="text/x-handlebars-template">
+            <tr>
+                <td>{{artist}}</td><td>{{name}}</td>
+            </tr>  
+           </script>
+        </tbody>
+      </table>
   
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="bower/jquery/dist/jquery.min.js"></script>

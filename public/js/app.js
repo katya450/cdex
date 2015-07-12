@@ -1,5 +1,28 @@
 $(document).ready(function(){
 
+	showRecords()
+	
+	var recordsTemplate = Handlebars.compile($('#records-template').html())
+	var recordTable = $('#recordtable tbody')
+
+	function showRecords() {
+		$.ajax({
+			type: 'GET',
+			url: '/records',
+			success: listRecords
+		})
+	}
+	
+	function listRecords(response) {
+		response.forEach(appendRecord)
+		
+	}
+	
+	function appendRecord(record) {
+		var row = recordsTemplate(record) 		//laittaa levytemplateen objectin arvot (artisti+nimi tässä tapauksessa)
+		recordTable.append(row)					//lisää sisällön html -sivulle			
+	}
+	
 	$('#add').click(function() {
 		var artist = $('#artist').val()
 		var name = $('#name').val()
