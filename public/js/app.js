@@ -38,14 +38,10 @@ $(document).ready(function(){
 			url: '/record',
 			contentType: 'application/json',
 			data: JSON.stringify(record),		//tekee json oliosta stringin
-			success: showSuccess
+			success: appendRecord
 		})
 	}
 	
-	function showSuccess(response) {
-		console.log(JSON.stringify(response))
-		
-	}
 })
 
 //JavaScriptissä ei puolipisteitä!
