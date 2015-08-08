@@ -1,7 +1,9 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -11,9 +13,11 @@ public class Record extends Model {
   private static final long serialVersionUID = 2776119609273705779L;
 
   @Constraints.Required
+  @Column(nullable = false)
   public String artist;
   
   @Constraints.Required    
+  @Column(nullable = false)
   public String name;
   
   @Id
