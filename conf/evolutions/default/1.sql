@@ -4,20 +4,24 @@
 # --- !Ups
 
 create table record (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   artist                    varchar(255),
   name                      varchar(255),
   constraint pk_record primary key (id))
 ;
+
+create sequence record_seq;
 
 
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table record;
+drop table if exists record;
 
-SET FOREIGN_KEY_CHECKS=1;
+SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists record_seq;
 
