@@ -26,9 +26,11 @@ $(document).ready(function(){
 	$('#add').click(function() {
 		var artist = $('#artist').val()
 		var name = $('#name').val()
+		var mediaType = parseInt($('#mediatype').val())
 		addRecord({							//luo json olion, sisältö {:n sisällä
 			artist: artist,
-			name: name
+			name: name,
+			mediaType: mediaType
 		})
 	})	
 	
