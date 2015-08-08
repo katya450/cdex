@@ -2,6 +2,9 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# Default web page
+GET     /                          controllers.Assets.at(path="/public", file="index.html")
+
 # REST endpoint 
 POST    /record                    controllers.Application.upsertRecord()
 GET     /records                   controllers.Application.getRecords()
