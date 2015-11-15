@@ -6,4 +6,6 @@ In project root:
 - On Ubuntu, create symlink for nodejs so that bower finds it `ln -s /usr/bin/nodejs /usr/bin/node`.
 - Install browser javascript libraries `bower install`.
 - Create empty database `mysql -u root -p < scripts/create_database.sql`.
-- Start application `sbt run`.
+- Start sbt `sbt`.
+- To start application, on sbt command line type `run`.
+- To create eclipse project files, on sbt command line type `eclipse`.
