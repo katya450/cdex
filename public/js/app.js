@@ -1,4 +1,12 @@
-$(document).ready(function(){
+$(function() {
+  require.config({
+    baseUrl: "bower/",
+    paths: {
+      'jquery': 'jquery/dist/jquery',
+      'handlebars': 'handlebars/handlebars'
+    }
+  })
+  require(['jquery', 'handlebars'], function($, Handlebars) {
 
 	showRecords()
 	
@@ -43,7 +51,7 @@ $(document).ready(function(){
 			success: appendRecord
 		})
 	}
-	
+  })
 })
 
 //JavaScriptissä ei puolipisteitä!
