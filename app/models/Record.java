@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
-@Entity                                     //@ = annotaatio
+@Entity
 @Table(name="records")
 public class Record extends Model {
 
