@@ -1,56 +1,58 @@
 $(function() {
   require.config({
-    baseUrl: "bower/",
-    paths: {
-      'jquery': 'jquery/dist/jquery',
-      'handlebars': 'handlebars/handlebars',
-      'bacon': 'bacon/dist/bacon'
+    baseUrl : "bower/",
+    paths : {
+      'jquery' : 'jquery/dist/jquery',
+      'handlebars' : 'handlebars/handlebars',
+      'bacon' : 'bacon/dist/bacon'
     }
   })
-  require(['jquery', 'handlebars', 'bacon'], function($, Handlebars, Bacon) {
+  require([ 'jquery', 'handlebars', 'bacon' ], function($, Handlebars, Bacon) {
 
-	showRecords()
-	
-	var recordsTemplate = Handlebars.compile($('#records-template').html())
-	var recordTable = $('#recordtable tbody')
+    var $recordRowTemplate = Handlebars.compile($('#records-template').html())
 
-	function showRecords() {
-		$.ajax({
-			type: 'GET',
-			url: '/records',
-			success: listRecords
-		})
-	}
-	
-	function listRecords(response) {
-		response.forEach(appendRecord)
-		
-	}
-	
-	function appendRecord(record) {
-		var row = recordsTemplate(record)
-		recordTable.append(row)			
-	}
-	
-	$('#add').click(function() {
-		var artist = $('#artist').val()
-		var name = $('#name').val()
-		var mediaType = parseInt($('#mediatype').val())
-		addRecord({
-			artist: artist,
-			name: name,
-			mediaType: mediaType
-		})
-	})	
-	
-	function addRecord(record) {
-		$.ajax({
-			type: 'POST',
-			url: '/record',
-			contentType: 'application/json',
-			data: JSON.stringify(record),
-			success: appendRecord
-		})
-	}
+    var showRecordsE = showRecords()
+    var addE = $('#add').asEventStream('click')
+      .flatMap(recordFromUi)
+      .flatMap(addRecord)
+
+    showRecordsE.onValue(listRecords)
+    showRecordsE.onError(function(e) { console.log('TODO: error loading /records', e) })
+
+    addE.onValue(appendRecord)
+    addE.onError(function(e) { console.log('TODO: error inserting /record', e) })
+
+    function showRecords() {
+      return Bacon.fromPromise($.ajax({
+        url : '/records'
+      }))
+    }
+
+    function addRecord(record) {
+      return Bacon.fromPromise($.ajax({
+        type : 'POST',
+        url : '/record',
+        contentType : 'application/json',
+        data : JSON.stringify(record),
+      }))
+    }
+
+    function recordFromUi() {
+      return {
+        artist : $('#artist').val(),
+        name : $('#name').val(),
+        mediaType : parseInt($('#mediatype').val())
+      }
+    }
+
+    function listRecords(response) {
+      response.forEach(appendRecord)
+    }
+
+    function appendRecord(record) {
+      var row = $recordRowTemplate(record)
+      $('#recordtable tbody').append(row)
+    }
+
   })
 })
