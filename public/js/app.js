@@ -27,32 +27,29 @@ $(function() {
 	}
 	
 	function appendRecord(record) {
-		var row = recordsTemplate(record) 		//laittaa levytemplateen objectin arvot (artisti+nimi tässä tapauksessa)
-		recordTable.append(row)					//lisää sisällön html -sivulle			
+		var row = recordsTemplate(record)
+		recordTable.append(row)			
 	}
 	
 	$('#add').click(function() {
 		var artist = $('#artist').val()
 		var name = $('#name').val()
 		var mediaType = parseInt($('#mediatype').val())
-		addRecord({							//luo json olion, sisältö {:n sisällä
+		addRecord({
 			artist: artist,
 			name: name,
 			mediaType: mediaType
 		})
 	})	
 	
-	function addRecord(record) {				//nimeää saamansa parametrin "recordiksi" (koska whatever)
+	function addRecord(record) {
 		$.ajax({
 			type: 'POST',
 			url: '/record',
 			contentType: 'application/json',
-			data: JSON.stringify(record),		//tekee json oliosta stringin
+			data: JSON.stringify(record),
 			success: appendRecord
 		})
 	}
   })
 })
-
-//JavaScriptissä ei puolipisteitä!
-//Stringeissä yksittäishipsut, ei tuplia
