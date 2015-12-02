@@ -3,10 +3,11 @@ $(function() {
     baseUrl: "bower/",
     paths: {
       'jquery': 'jquery/dist/jquery',
-      'handlebars': 'handlebars/handlebars'
+      'handlebars': 'handlebars/handlebars',
+      'bacon': 'bacon/dist/bacon'
     }
   })
-  require(['jquery', 'handlebars'], function($, Handlebars) {
+  require(['jquery', 'handlebars', 'bacon'], function($, Handlebars, Bacon) {
 
 	showRecords()
 	
