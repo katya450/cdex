@@ -19,6 +19,8 @@
     "jquery": "~2.1.4",
     "requirejs": "~2.1.18",
     "handlebars": "~3.0.3",
-    "bacon": "~0.7.82"
+    "bacon": "~0.7.82",
+    "bacon.jquery": "~0.4.12",
+    "bacon.model": "~0.1.12"
   }
 }

@@ -4,29 +4,32 @@ $(function() {
     paths : {
       'jquery' : 'jquery/dist/jquery',
       'handlebars' : 'handlebars/handlebars',
-      'bacon' : 'bacon/dist/bacon'
+      'bacon' : 'bacon/dist/bacon',
+      'bacon.jquery': 'bacon.jquery/dist/bacon.jquery',
+      'bacon.model': 'bacon.model/dist/bacon.model'
     }
   })
-  require([ 'jquery', 'handlebars', 'bacon' ], function($, Handlebars, Bacon) {
+  require([ 'jquery', 'handlebars', 'bacon', 'bacon.jquery'], function($, Handlebars, Bacon, bjq) {
 
     var $recordRowTemplate = Handlebars.compile($('#records-template').html())
 
-    var showRecordsE = showRecords()
-    var addE = $('#add').asEventStream('click')
-      .flatMap(recordFromUi)
-      .flatMap(addRecord)
-
+    var showRecordsE = Bacon.fromPromise($.ajax({ url : '/records' }))
+    
     showRecordsE.onValue(listRecords)
     showRecordsE.onError(function(e) { console.log('TODO: error loading /records', e) })
 
-    addE.onValue(appendRecord)
-    addE.onError(function(e) { console.log('TODO: error inserting /record', e) })
+    var addE = $('#add').asEventStream('click')
 
-    function showRecords() {
-      return Bacon.fromPromise($.ajax({
-        url : '/records'
-      }))
-    }
+    var recordInputE = Bacon.combineTemplate({
+      artist: Bacon.$.textFieldValue($('#artist')).map('.trim'),
+      name: Bacon.$.textFieldValue($('#name')).map('.trim'),
+      mediaType: Bacon.$.textFieldValue($('#mediatype')).map(function(m) { return parseInt(m) })
+      })
+
+    var insertRecordE = recordInputE.sampledBy(addE).flatMap(addRecord)
+    
+    insertRecordE.onValue(appendRecord)
+    insertRecordE.onError(function(e) { console.log('TODO: error inserting /record', e) })
 
     function addRecord(record) {
       return Bacon.fromPromise($.ajax({
@@ -35,14 +38,6 @@ $(function() {
         contentType : 'application/json',
         data : JSON.stringify(record),
       }))
-    }
-
-    function recordFromUi() {
-      return {
-        artist : $('#artist').val(),
-        name : $('#name').val(),
-        mediaType : parseInt($('#mediatype').val())
-      }
     }
 
     function listRecords(response) {
