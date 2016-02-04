@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+.container {
+	margin-top: 30px;
+	background-color: #fff;
+}
+
+table {
+	margin-top: 20px;
+}
+
+.input-group .form-control {
+    margin-bottom: 6px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #6b0f9a;
+    border-color: #420a80;
+    height: 40px;
+}
+    
+.input-group {
+    padding-top: 20px;
+}

@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CDEX</title>
 <link href="bower/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -14,38 +15,38 @@
 	  	<![endif]-->
 </head>
 <body>
-  <div class="container">
-    <div class="input-group">
-      <input id="artist" type="text" class="form-control" placeholder="Artisti" /> 
-      <input id="name" type="text" class="form-control" placeholder="Levyn nimi" /> 
-      <select id="mediatype" class="form-control">
-        <option value="0">CD</option>
-        <option value="1">DVD</option>
-        <option value="2">LP</option>
-        <option value="3">BD</option>
-        <option value="4">VHS</option>
-        <option value="5">MC</option>
-      </select>
-
-      <button id="add" type="button" class="btn btn-default">KLIK</button>
-    </div>
-    <table id="recordtable" class="table">
-      <thead>
-        <tr>
-          <th>Artist</th>
-          <th>Record</th>
-          <th>Media type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <script id="records-template" type="text/x-handlebars-template">
+	  <div class="container">
+	    <div class="input-group">
+	      <input id="artist" type="text" class="form-control" placeholder="Artist" /> 
+	      <input id="name" type="text" class="form-control" placeholder="Record name" /> 
+	      <select id="mediatype" class="form-control">
+	        <option value="0">CD</option>
+	        <option value="1">DVD</option>
+	        <option value="2">LP</option>
+	        <option value="3">BD</option>
+	        <option value="4">VHS</option>
+	        <option value="5">MC</option>
+	      </select>
+	
+	      <button id="add" type="button" class="btn btn-primary btn-lg btn-block">add</button>
+	    </div>
+	    <table id="recordtable" class="table">
+	      <thead>
+	        <tr>
+	          <th>Artist</th>
+	          <th>Record</th>
+	          <th>Media type</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <script id="records-template" type="text/x-handlebars-template">
             <tr>
                 <td>{{artist}}</td><td>{{name}}</td><td>{{mediaType}}</td>
             </tr>  
            </script>
-      </tbody>
-    </table>
-  </div>
+	      </tbody>
+	    </table>
+	  </div>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="bower/jquery/dist/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
