@@ -23,5 +23,14 @@ public class Application extends Controller {
     List<Record> records = Record.find.all();
     return ok(Json.toJson(records));
   }
+  
+  public static Result getArtist(String prefix) {
+      List<Record> records = Ebean
+    		  .find(Record.class).where()
+    		  .startsWith("artist", prefix)
+    		  .findList();
+
+	  return ok(Json.toJson(records));
+  }
 }
    
