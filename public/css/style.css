@@ -23,3 +23,7 @@ table {
 .input-group {
     padding-top: 20px;
 }
+
+#alert {
+	display: none;
+}

@@ -16,7 +16,7 @@ $(function() {
     var showRecordsE = Bacon.fromPromise($.ajax({ url : '/records' }))
     
     showRecordsE.onValue(listRecords)
-    showRecordsE.onError(function(e) { console.log('TODO: error loading /records', e) })
+    showRecordsE.onError(displayAlert('Could not load records'))
 
     var addE = $('#add').asEventStream('click')
 
@@ -29,7 +29,7 @@ $(function() {
     var insertRecordE = recordInputE.sampledBy(addE).flatMap(addRecord)
     
     insertRecordE.onValue(appendRecord)
-    insertRecordE.onError(function(e) { console.log('TODO: error inserting /record', e) })
+    insertRecordE.onError(displayAlert('Could not insert a record.'))
 
     function addRecord(record) {
       return Bacon.fromPromise($.ajax({
@@ -49,5 +49,12 @@ $(function() {
       $('#recordtable tbody').append(row)
     }
 
+    function displayAlert(message) {
+      return function() {
+        $('#alert .message').text(message)
+        $('#alert').show()
+      }
+    }
+    
   })
 })
