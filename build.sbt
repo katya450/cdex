@@ -1,4 +1,4 @@
-name := """cdex2"""
+name := """cdex"""
 
 version := "1.0-SNAPSHOT"
 
