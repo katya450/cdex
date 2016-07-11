@@ -18,3 +18,4 @@ activator.bat
 activator-launch-1.2.12.jar
 /public/bower/*
 *.swp
+.DS_Store
