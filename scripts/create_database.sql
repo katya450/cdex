@@ -1,4 +1,5 @@
-# mysql -u root -p < create_database.sql
 DROP DATABASE IF EXISTS cdex;
-CREATE DATABASE cdex;
-GRANT ALL ON cdex.* TO cdex@localhost IDENTIFIED BY 'cdex';
+DROP USER IF EXISTS cdex;
+CREATE USER cdex WITH PASSWORD 'cdex';
+CREATE DATABASE cdex WITH OWNER = cdex;
+GRANT ALL PRIVILEGES ON DATABASE cdex TO cdex;

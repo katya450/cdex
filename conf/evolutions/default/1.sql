@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table records (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   artist                    varchar(255) not null,
   name                      varchar(255) not null,
   media_type                integer,
@@ -12,14 +12,14 @@ create table records (
   constraint pk_records primary key (id))
 ;
 
+create sequence records_seq;
+
 
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+drop table if exists records cascade;
 
-drop table records;
-
-SET FOREIGN_KEY_CHECKS=1;
+drop sequence if exists records_seq;
 
