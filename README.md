@@ -1,5 +1,8 @@
 cdex
 ====
+
+###A tiny project to get familiar with modern way to build web applications.
+
 Install [Java](http://openjdk.java.net/install/), [PostgreSQL](https://www.postgresql.org/download/), [sbt](http://www.scala-sbt.org/download.html), [node.js and npm](https://nodejs.org/en/download/) and [bower](http://bower.io/#install-bower).
 
 In project root:
