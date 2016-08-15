@@ -4,7 +4,7 @@ $(function() {
     paths : {
       'jquery' : 'jquery/dist/jquery',
       'handlebars' : 'handlebars/handlebars',
-      'bacon' : 'bacon/dist/bacon',
+      'bacon' : 'bacon/dist/Bacon',
       'bacon.jquery': 'bacon.jquery/dist/bacon.jquery',
       'bacon.model': 'bacon.model/dist/bacon.model'
     }
