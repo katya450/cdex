@@ -24,6 +24,10 @@ public class Application extends Controller {
     return ok(Json.toJson(records));
   }
   
+  public static Result deleteRecord() {
+	  return ok();
+  }
+  
   public static Result getArtist(String prefix) {
       List<Record> records = Ebean
     		  .find(Record.class).where()
